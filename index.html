@@ -4,97 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Pagamento</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="loadloc.js" defer></script>
+    <script src="validation.js" defer></script>
 </head>
 <body>
 
-<header>
-    <h1>Personal Information</h1>
-</header>
-
-<article>
     <div class="form-container">
-        <form id="payment-form">
-          
+        <form id="payment_form">
+            
             <fieldset>
                 <legend>Personal Information</legend>
-                <label for="title">Title:</label>
+                <label for="title">Title</label>
                 <select id="title" name="title">
                     <option value="mr">Mr.</option>
                     <option value="ms">Ms.</option>
                 </select>
                 
-                <label for="first-name">First name:</label>
-                <input type="text" id="first-name" name="first-name" placeholder="Your first name here" required>
+                <label for="first_name">First name</label>
+                <input type="text" id="first_name" name="first_name" placeholder="Your first name here" >
+                <span class="error" id="first_nameError"></span>
 
-                <label for="last-name">Last name:</label>
-                <input type="text" id="last-name" name="last-name" placeholder="Your last name here" required>
+                <label for="last_name">Last name</label>
+                <input type="text" id="last_name" name="last_name" placeholder="Your last name here" >
+                <span class="error" id="last_nameError"></span>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="youremail@server.com" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="youremail@server.com">
+                <span class="error" id="emailError"></span>
             </fieldset>
 
           
             <fieldset>
                 <legend>Address</legend>
-                <label for="street">Street:</label>
-                <input type="text" id="street" name="street" placeholder="Street, number, apartment" required>
+                <label for="street">Street</label>
+                <input type="text" id="street" name="street" placeholder="Street, number, apartment">
+                <span class="error" id="streetError"></span>
 
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" placeholder="City" required>
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="City" >
+                <span class="error" id="cityError"></span>
 
-                <label for="state">State/Region:</label>
-                <input type="text" id="state" name="state" placeholder="State" required>
+                <label for="state">State/Region</label>
+                <input type="text" id="state" name="state" placeholder="State">
+                <span class="error" id="stateError"></span>
 
-                <label for="postal-code">Postal code:</label>
-                <input type="text" id="postal-code" name="postal-code" placeholder="Postal code" required>
-
-                <label for="country">Country:</label>
-                <select id="loc" name="country1">
-                </select>
+                <label for="postal_code">Postal code</label>
+                <input type="text" id="postal_code" name="postal-code" placeholder="Postal code">
+                <span class="error" id="postalCodeError"></span>
+                
+                <label for="loc">Country</label>
+               
+                <select id="loc" name="country1"></select>
             </fieldset>
 
-        
+           
             <fieldset>
                 <legend>Payment details</legend>
+
+                
                 <fieldset>
-                <legend> credit Card</legend>
-                <input type="radio" id="amex" name="credit-card" value="american-express">
-                <label for="amex">American Express</label>
-
-                <input type="radio" id="mastercard" name="credit-card" value="mastercard">
-                <label for="mastercard">Mastercard</label>
-
-                <input type="radio" id="visa" name="credit-card" value="visa">
-                <label for="visa">Visa</label>
-
-                <input type="radio" id="sas" name="credit-card" value="sas-card">
-                <label for="sas">SAS Card</label>
+                    <legend>Credit Card</legend>
+                    <div class="radio-option">
+                      <input type="radio" id="mastercard" name="credit-card" value="mastercard">
+                      <span>Mastercard</span>
+                    </div>
+                    
+                    <div class="radio-option">
+                      <input type="radio" id="visa" name="credit-card" value="visa">
+                      <span>Visa</span>
+                    </div>
+                    
+                    <div class="radio-option">
+                      <input type="radio" id="amex" name="credit-card" value="amex">
+                      <span>American Express</span>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="amex" name="credit-card" value="amex">
+                      <span>SAS Card</span>
+                    </div>
+                    <span class="error" id="paymentMethodError"></span> 
+                    
                 </fieldset>
 
-                <label for="card-number">Card number:</label>
-                <input type="text" id="card-number" name="card-number" placeholder="Card number" required>
+                
+                <label for="card_number">Card number</label>
+                <input type="text" id="card_number" name="card-number" placeholder="Card number">
+                <span class="error" id="cardNumberError"></span>
 
-                <label for="expiry-date">Expiry date:</label>
-                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+                <label for="expiry_date">Expiry date</label>
+                <input type="text" id="expiry_date" name="expiry-date" placeholder="MM/YY">
+                <span class="error" id="expiryDateError"></span>
 
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" placeholder="XXX" required>
-        
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="XXX">
+                <span class="error" id="cvvError"></span>
+            
+
+            
             <fieldset>
                 <legend>Terms and Conditions</legend>
                 <label for="terms">
                     <input type="checkbox" id="terms" name="terms">
-                    I agree to the terms and conditions
+                    <span class="error" id="termsError"></span>
+                    I agree to the terms and conditions.
                 </label>
-
                 <button type="submit">Submit my details</button>
             </fieldset>
-        </fieldset>
+          </fieldset>
         </form>
     </div>
-</article>
+
 
 </body>
 <footer> 
