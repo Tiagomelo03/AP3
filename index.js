@@ -3,7 +3,8 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, )));
+// Servir arquivos estáticos (como HTML, CSS, JS) da pasta 'public'
+app.use(express.static(path.join(__dirname)));
 
 // Rota principal
 app.get('/', (req, res) => {
